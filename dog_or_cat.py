@@ -42,7 +42,7 @@ dls = DataBlock(
 learn = vision_learner(dls, resnet18, metrics=error_rate)
 learn.fine_tune(3)
 
-is_dog,_,dog_probability = learn.predict(PILImage.create('dog.jpg'))
-print(f"The photo depicts: {is_dog}. Probability: {dog_probability[1]:.4f}")
-is_cat,_,cat_probability = learn.predict(PILImage.create('cat.jpg'))
-print(f"The photo depicts: {is_cat}. Probability: {cat_probability[0]:.4f}")
+predicted_animal,prediction_index,prediction_probability = learn.predict(PILImage.create('dog.jpg'))
+print(f"The photo depicts: {predicted_animal}. Probability: {prediction_probability[prediction_index]:.4f}")
+predicted_animal,prediction_index,prediction_probability = learn.predict(PILImage.create('cat.jpg'))
+print(f"The photo depicts: {predicted_animal}. Probability: {prediction_probability[prediction_index]:.4f}")
